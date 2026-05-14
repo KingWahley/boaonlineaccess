@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANK OF AMERICA
+ - Profile</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: {
+                        brand: { 50: '#f0f4f8', 100: '#dbe4ef', 500: '#0065B3', 800: '#013a81', 900: '#012169', 950: '#011545', },
+                        accent: { 500: '#E31837', },
+                        primary: '#012169',
+                        red_accent: '#E31837',
+                        background_light: '#F8F9FA'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background_light text-gray-800 min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Top Navigation -->
+    <nav class="bg-brand-900 shadow-md border-b border-brand-800 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <a href="dashboard.html" class="flex items-center space-x-3">
+                    <div class="bg-white rounded-lg p-1.5 flex items-center shadow-sm">
+                        <img src="logo.png" alt="Bank of America" class="h-7 object-contain">
+                    </div>
+                    <span class="font-bold text-white text-base sm:text-lg tracking-wider">BANK OF AMERICA</span>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Dashboard</a>
+                    <a href="accounts.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Accounts</a>
+                    <a href="transfer.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Transfers</a>
+                    <a href="transactions.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Activity</a>
+                    <a href="profile.html" class="flex items-center space-x-3 border-l border-brand-800 pl-6 ml-2 group cursor-pointer hover:opacity-80 transition">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold leading-tight text-accent-500 group-hover:text-white transition">Terry Robert</p>
+                            <p class="text-xs text-brand-100 font-light">Online</p>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-brand-800 flex items-center justify-center border border-accent-500 transition group-hover:bg-brand-500">
+                            <i data-lucide="user" class="h-5 w-5 text-white"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Profile & Settings</h1>
+            <p class="text-sm text-gray-500 mt-1">Manage your identity, security, and view your wealth portfolio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Personal Information & Docs -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Profile Base -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-brand-900 h-8"></div>
+                    <div class="p-8 relative">
+                        <div class="w-full flex justify-between items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Terry Robert</h3>
+                                <p class="text-brand-800 text-sm font-medium">Premium Member</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-gray-100">
+                            <div>
+                                <label class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Email Address</label>
+                                <p class="text-gray-900 font-medium mt-1">terryrobert252@gmail.com</p>
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-500 uppercase tracking-wider font-semibold">User Name</label>
+                                <p class="text-gray-900 font-medium mt-1">Terry_R</p>
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Account Password</label>
+                                <div class="flex items-center text-gray-900 font-mono mt-1">
+                                    <span class="mr-2">Terry12</span>
+                                    <i data-lucide="eye" class="w-4 h-4 text-gray-400 cursor-pointer"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-500 uppercase tracking-wider font-semibold">ATM Pin</label>
+                                <div class="flex items-center text-gray-900 font-mono mt-1">
+                                    <span class="mr-2">2044</span>
+                                    <i data-lucide="eye" class="w-4 h-4 text-gray-400 cursor-pointer"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-8">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="file-badge" class="w-6 h-6 text-brand-900 mr-2"></i>
+                        <h3 class="text-lg font-bold text-gray-900">Identity Verification</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">Upload a valid government-issued ID (Driver's License, Passport, or National ID) to keep your profile in compliance and secure.</p>
+                    
+                    <div onclick="requireAdminCode(event)" class="border-2 border-dashed border-gray-300 rounded-lg p-10 flex flex-col items-center justify-center text-gray-500 hover:bg-brand-50 hover:border-brand-500 hover:text-brand-900 transition cursor-pointer">
+                        <i data-lucide="upload-cloud" class="w-10 h-10 mb-3 text-brand-800"></i>
+                        <span class="text-sm font-semibold text-gray-800">Click to upload new ID</span>
+                        <p class="text-xs mt-1">PNG, JPG, or PDF (max. 10MB)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Investment Portfolio -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-6">
+                    <div class="flex items-center justify-between mb-4">
+                         <div class="flex items-center">
+                            <i data-lucide="pie-chart" class="w-5 h-5 text-brand-900 mr-2"></i>
+                            <h3 class="text-lg font-bold text-gray-900">Investment Portfolio</h3>
+                        </div>
+                        <button class="text-brand-800 hover:text-brand-900"><i data-lucide="more-horizontal" class="w-5 h-5"></i></button>
+                    </div>
+                    
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mt-4">Total Assets Value</p>
+                    <p class="text-3xl font-bold text-gray-900 my-1">$1,090,000.00</p>
+                    <div class="flex items-center text-green-600 text-sm font-medium mb-6">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +$12,450.00 Today
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded bg-white border border-gray-200 font-bold text-gray-900 flex items-center justify-center text-xs mr-3">AAPL</div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-900">Apple Inc.</p>
+                                    <p class="text-xs text-gray-500">2,000 Shares</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-sm text-gray-900">$350,000.00</p>
+                                <p class="text-xs text-green-600 font-medium">+1.2%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded bg-white border border-gray-200 font-bold text-gray-900 flex items-center justify-center text-xs mr-3">VOO</div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-900">Vanguard S&P 500</p>
+                                    <p class="text-xs text-gray-500">ETF Holding</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-sm text-gray-900">$1,500,000.00</p>
+                                <p class="text-xs text-green-600 font-medium">+0.8%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded bg-white border border-gray-200 font-bold text-gray-900 flex items-center justify-center text-xs mr-3">TSLA</div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-900">Tesla Inc.</p>
+                                    <p class="text-xs text-gray-500">1,500 Shares</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-sm text-gray-900">$600,000.00</p>
+                                <p class="text-xs text-red-500 font-medium">-2.1%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="requireAdminCode(event)" class="w-full mt-6 bg-brand-50 text-brand-900 font-semibold py-2.5 rounded-lg border border-brand-200 hover:bg-brand-100 transition text-sm">
+                        Trade / Invest
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-900 mt-auto py-8 text-center px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <div class="flex items-center text-gray-400 opacity-50">
+                <span class="font-semibold">BANK OF AMERICA
+</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+        function requireAdminCode(event) {
+            if (event && event.preventDefault) event.preventDefault();
+            prompt("Please input your Admin Profile Code to proceed:");
+            alert("Invalid or missing Admin Profile Code. If you don't have it, please ask your account manager.");
+        }
+    </script>
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-brand-900 border-t border-brand-800 text-white md:hidden z-50 pb-[env(safe-area-inset-bottom)]">
+        <div class="flex justify-around items-center h-16">
+            <a href="dashboard.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Home</span>
+            </a>
+            <a href="accounts.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Accounts</span>
+            </a>
+            <a href="transfer.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Transfer</span>
+            </a>
+            <a href="transactions.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Activity</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-100 text-accent-500 transition focus:opacity-100">
+                <i data-lucide="user" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Profile</span>
+            </a>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

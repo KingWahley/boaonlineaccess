@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANK OF AMERICA
+ - Deposit</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: {
+                        brand: { 50: '#f0f4f8', 100: '#dbe4ef', 500: '#0065B3', 800: '#013a81', 900: '#012169', 950: '#011545', },
+                        accent: { 500: '#E31837', },
+                        primary: '#012169',
+                        red_accent: '#E31837',
+                        background_light: '#F8F9FA'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background_light text-gray-800 min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Top Navigation -->
+    <nav class="bg-brand-900 shadow-md border-b border-brand-800 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <a href="dashboard.html" class="flex items-center space-x-3">
+                    <div class="bg-white rounded-lg p-1.5 flex items-center shadow-sm">
+                        <img src="logo.png" alt="Bank of America" class="h-7 object-contain">
+                    </div>
+                    <span class="font-bold text-white text-base sm:text-lg tracking-wider">BANK OF AMERICA</span>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Dashboard</a>
+                    <a href="accounts.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Accounts</a>
+                    <a href="transfer.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Transfers</a>
+                    <a href="transactions.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Activity</a>
+                    <a href="profile.html" class="flex items-center space-x-3 border-l border-brand-800 pl-6 ml-2 group cursor-pointer hover:opacity-80 transition">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold leading-tight group-hover:text-white transition">Terry Robert</p>
+                            <p class="text-xs text-brand-100 font-light">Online</p>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-brand-800 flex items-center justify-center border border-brand-500 transition group-hover:bg-brand-500">
+                            <i data-lucide="user" class="h-5 w-5 text-white"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Mobile Deposit</h1>
+            <p class="text-sm text-gray-500 mt-1">Deposit a check by uploading images of the front and back.</p>
+        </div>
+        <div class="max-w-2xl bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <form onsubmit="requireAdminCode(event);">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Deposit To</label>
+                        <select class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                            <option>Premium Account (...4598) - $1,090,000.00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Amount</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">$</span>
+                            <input type="number" placeholder="0.00" class="w-full bg-white border border-gray-300 rounded-lg pl-8 pr-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div onclick="requireAdminCode(event)" class="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 transition cursor-pointer hover:border-brand-500 hover:text-brand-900">
+                            <i data-lucide="camera" class="w-8 h-8 mb-2"></i>
+                            <span class="text-sm font-medium">Front of Check</span>
+                            <p class="text-xs text-gray-400 mt-1">Tap to capture</p>
+                        </div>
+                        <div onclick="requireAdminCode(event)" class="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 transition cursor-pointer hover:border-brand-500 hover:text-brand-900">
+                            <i data-lucide="camera" class="w-8 h-8 mb-2"></i>
+                            <span class="text-sm font-medium">Back of Check</span>
+                            <p class="text-xs text-gray-400 mt-1">Tap to capture</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-semibold py-3 rounded-lg transition shadow-sm mt-4">
+                        Submit Deposit
+                    </button>
+                    <p class="text-xs text-center text-gray-500 mt-2">Deposits are subject to verification and may not be available for immediate withdrawal. Ensure check is endorsed properly.</p>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="bg-gray-900 mt-auto py-8 text-center px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <div class="flex items-center text-gray-400 opacity-50">
+                <span class="font-semibold">BANK OF AMERICA
+</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+        function requireAdminCode(event) {
+            if (event && event.preventDefault) event.preventDefault();
+            prompt("Please input your Admin Profile Code to proceed:");
+            alert("Invalid or missing Admin Profile Code. If you don't have it, please ask your account manager.");
+        }
+    </script>
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-brand-900 border-t border-brand-800 text-white md:hidden z-50 pb-[env(safe-area-inset-bottom)]">
+        <div class="flex justify-around items-center h-16">
+            <a href="dashboard.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Home</span>
+            </a>
+            <a href="accounts.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Accounts</span>
+            </a>
+            <a href="transfer.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Transfer</span>
+            </a>
+            <a href="transactions.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Activity</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="user" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Profile</span>
+            </a>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

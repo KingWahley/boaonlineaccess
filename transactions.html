@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANK OF AMERICA
+ - Transactions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: {
+                        brand: { 50: '#f0f4f8', 100: '#dbe4ef', 500: '#0065B3', 800: '#013a81', 900: '#012169', 950: '#011545', },
+                        accent: { 500: '#E31837', },
+                        primary: '#012169',
+                        red_accent: '#E31837',
+                        background_light: '#F8F9FA'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background_light text-gray-800 min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Top Navigation -->
+    <nav class="bg-brand-900 shadow-md border-b border-brand-800 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <a href="dashboard.html" class="flex items-center space-x-3">
+                    <div class="bg-white rounded-lg p-1.5 flex items-center shadow-sm">
+                        <img src="logo.png" alt="Bank of America" class="h-7 object-contain">
+                    </div>
+                    <span class="font-bold text-white text-base sm:text-lg tracking-wider">BANK OF AMERICA</span>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Dashboard</a>
+                    <a href="accounts.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Accounts</a>
+                    <a href="transfer.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Transfers</a>
+                    <a href="transactions.html" class="text-accent-500 hover:text-white transition font-medium hidden md:block">Activity</a>
+                    <a href="profile.html" class="flex items-center space-x-3 border-l border-brand-800 pl-6 ml-2 group cursor-pointer hover:opacity-80 transition">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold leading-tight group-hover:text-white transition">Terry Robert</p>
+                            <p class="text-xs text-brand-100 font-light">Online</p>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-brand-800 flex items-center justify-center border border-brand-500 transition group-hover:bg-brand-500">
+                            <i data-lucide="user" class="h-5 w-5 text-white"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="mb-8 flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Transactions</h1>
+                <p class="text-sm text-gray-500 mt-1">Review your recent account activity.</p>
+            </div>
+            <div class="flex space-x-3">
+                <button class="bg-white border text-sm font-medium border-gray-300 text-gray-700 px-4 py-2 rounded-lg shadow-sm flex items-center hover:bg-gray-50 transition">
+                    <i data-lucide="arrow-down-to-line" class="w-4 h-4 mr-2"></i> Export Data
+                </button>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider border-b border-gray-200">
+                            <th class="px-6 py-4 font-semibold whitespace-nowrap">Date</th>
+                            <th class="px-6 py-4 font-semibold">Description</th>
+                            <th class="px-6 py-4 font-semibold text-right">Amount</th>
+                            <th class="px-6 py-4 font-semibold text-right whitespace-nowrap">Balance After</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTableBody" class="divide-y divide-gray-100 text-sm"></tbody>
+                </table>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200 bg-gray-50 text-center">
+                <button class="text-sm font-medium text-brand-800 hover:text-brand-900">Load More Activity</button>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-900 mt-auto py-8 text-center px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <div class="flex items-center text-gray-400 opacity-50">
+                <span class="font-semibold">BANK OF AMERICA
+</span>
+            </div>
+        </div>
+    </footer>
+    <script src="app-state.js"></script>
+    <script>
+        lucide.createIcons();
+        renderTransactionsTable('transactionsTableBody');
+    </script>
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-brand-900 border-t border-brand-800 text-white md:hidden z-50 pb-[env(safe-area-inset-bottom)]">
+        <div class="flex justify-around items-center h-16">
+            <a href="dashboard.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Home</span>
+            </a>
+            <a href="accounts.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Accounts</span>
+            </a>
+            <a href="transfer.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Transfer</span>
+            </a>
+            <a href="transactions.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-100 text-accent-500 transition focus:opacity-100">
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Activity</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="user" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Profile</span>
+            </a>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

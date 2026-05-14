@@ -1,0 +1,195 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #F8F9FA;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Topbar */
+.topbar {
+  background: #f0f4f8;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  padding: 10px 0;
+}
+.topbar .left,
+.topbar .right {
+  display: flex;
+  gap: 15px;
+}
+.topbar .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header */
+.header {
+  background: white;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.header .logo {
+  height: 40px;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login-box {
+  background: #E31837;
+  padding: 15px;
+  width: 260px;
+  border-radius: 6px;
+  color: white;
+}
+.login-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+}
+.login-box button {
+  width: 100%;
+  background: white;
+  color: #E31837;
+  font-weight: bold;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+.login-links {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.login-links a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Card Section */
+.cards-section {
+  padding: 40px 0;
+  background: #f0f4f8;
+}
+.cards-section h2 {
+  margin-bottom: 20px;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card {
+  background: white;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.card .bonus {
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Promotions */
+.promos {
+  padding: 40px 0;
+}
+.promos .promo {
+  background: #eee;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+.promos .highlight {
+  background: #fce8eb;
+}
+
+/* Goals */
+.goals {
+  padding: 40px 0;
+  background: white;
+  text-align: center;
+}
+.goals .goal-items {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.goal img {
+  width: 100%;
+  border-radius: 4px;
+}
+.goal p {
+  margin-top: 8px;
+}
+
+/* Security */
+.security {
+  background: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+.security button {
+  padding: 10px 20px;
+  background: #E31837;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Mobile App */
+.mobile-app {
+  background: #012169;
+  color: white;
+  padding: 40px 0;
+}
+.app-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mobile-app button {
+  margin-top: 10px;
+  background: white;
+  color: #012169;
+  padding: 10px 15px;
+  border: none;
+}
+
+/* Footer */
+.disclaimer {
+  background: #f1f1f1;
+  padding: 30px 0;
+  font-size: 12px;
+  text-align: center;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.badges div {
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #ccc;
+}

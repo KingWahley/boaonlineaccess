@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANK OF AMERICA
+ - Transfer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: {
+                        brand: { 50: '#f5f3fa', 100: '#ebe6f5', 500: '#6d4fb0', 800: '#3a2466', 900: '#2D2340', 950: '#1d172e', },
+                        accent: { 500: '#ECA91C', },
+                        primary: '#4B2F83',
+                        red_accent: '#E31B23',
+                        background_light: '#FDF6EC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes moneyPulse {
+            0% { transform: translateX(0) scale(0.9); opacity: 0; }
+            20% { opacity: 1; }
+            50% { transform: translateX(120px) scale(1); opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateX(240px) scale(0.92); opacity: 0; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .modal-card {
+            animation: modalFadeIn 220ms ease-out;
+        }
+
+        .money-pill {
+            animation: moneyPulse 1.6s ease-in-out infinite;
+        }
+
+        .progress-shimmer {
+            background-size: 200% 100%;
+            animation: shimmer 1.6s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background_light text-gray-800 min-h-screen flex flex-col pb-16 md:pb-0">
+    <!-- Top Navigation -->
+    <nav class="bg-brand-900 shadow-md border-b border-brand-800 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <a href="dashboard.html" class="flex items-center">
+                    <div class="bg-white rounded-lg p-1.5 flex items-center shadow-sm">
+                        <img src="mainlogo.png" alt="America's BANK OF AMERICA
+s" class="h-7 object-contain">
+                    </div>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Dashboard</a>
+                    <a href="accounts.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Accounts</a>
+                    <a href="transfer.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Transfers</a>
+                    <a href="transactions.html" class="text-brand-100 hover:text-white transition font-medium hidden md:block">Activity</a>
+                    <a href="profile.html" class="flex items-center space-x-3 border-l border-brand-800 pl-6 ml-2 group cursor-pointer hover:opacity-80 transition">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-semibold leading-tight group-hover:text-white transition">William Gracie</p>
+                            <p class="text-xs text-brand-100 font-light">Online</p>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-brand-800 flex items-center justify-center border border-brand-500 transition group-hover:bg-brand-500">
+                            <i data-lucide="user" class="h-5 w-5 text-white"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Transfer Funds</h1>
+            <p class="text-sm text-gray-500 mt-1">Move money between your accounts or to external recipients.</p>
+        </div>
+        <div class="max-w-2xl bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <form onsubmit="requireAdminCode(event);">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">From Account</label>
+                        <select id="fromAccount" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                            <option>Premium Account (...4598) - $2,200,000.00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">To Account / Recipient</label>
+                        <input id="recipient" type="text" placeholder="Enter account number, routing number, or recipient name" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Amount</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">$</span>
+                            <input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" class="w-full bg-white border border-gray-300 rounded-lg pl-8 pr-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Routing Number (Optional for wire)</label>
+                        <input id="routingNumber" type="text" placeholder="e.g. 122000661" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Note / Memo</label>
+                        <textarea id="memo" rows="2" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"></textarea>
+                    </div>
+                    <p class="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-800">
+                        Transfers approved with the admin code are saved in this browser and listed as pending in your recent transactions.
+                    </p>
+                    <button type="submit" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-semibold py-3 rounded-lg transition shadow-sm">
+                        Review Transfer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="bg-gray-900 mt-auto py-8 text-center px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center justify-center">
+            <div class="flex items-center text-gray-400 opacity-50">
+                <span class="font-semibold">BANK OF AMERICA
+</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="transferModal" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/55 px-4 backdrop-blur-sm">
+        <div class="modal-card w-full max-w-md rounded-3xl bg-white shadow-2xl ring-1 ring-slate-200 overflow-hidden">
+            <div class="bg-gradient-to-r from-brand-950 via-brand-900 to-brand-800 px-6 py-5 text-white">
+                <p class="text-xs uppercase tracking-[0.3em] text-brand-100">Secure Transfer</p>
+                <h2 class="mt-2 text-2xl font-semibold">Authorize transfer</h2>
+                <p class="mt-1 text-sm text-brand-100">Enter the admin code to make this transfer </p>
+            </div>
+
+            <div id="modalAuthStep" class="px-6 py-6">
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <p class="text-sm font-semibold text-slate-900">Transfer summary</p>
+                    <div class="mt-3 space-y-2 text-sm text-slate-600">
+                        <div class="flex items-center justify-between gap-4">
+                            <span>Recipient</span>
+                            <span id="modalRecipient" class="font-medium text-slate-900"></span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4">
+                            <span>Amount</span>
+                            <span id="modalAmount" class="font-medium text-slate-900"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <label for="adminCodeInput" class="mt-5 block text-sm font-semibold text-slate-700">Admin Code</label>
+                <input id="adminCodeInput" type="password" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter admin code" class="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100">
+                <p id="adminCodeError" class="mt-2 hidden text-sm font-medium text-red-600">The admin code is incorrect. Please try again.</p>
+
+                <div class="mt-6 flex items-center justify-end gap-3">
+                    <button type="button" onclick="closeTransferModal()" class="rounded-2xl border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50">
+                        Cancel
+                    </button>
+                    <button type="button" onclick="confirmAdminCode()" class="rounded-2xl bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+
+            <div id="modalSendingStep" class="hidden px-6 py-8">
+                <div class="mx-auto flex w-full max-w-xs items-center justify-between">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-100 text-brand-900 shadow-inner">
+                        <i data-lucide="wallet" class="h-7 w-7"></i>
+                    </div>
+                    <div class="relative mx-4 h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
+                        <div class="progress-shimmer absolute inset-0 rounded-full bg-gradient-to-r from-brand-200 via-accent-500 to-brand-300"></div>
+                        <div class="money-pill absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-emerald-500 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-lg">
+                            USD
+                        </div>
+                    </div>
+                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 shadow-inner">
+                        <i data-lucide="landmark" class="h-7 w-7"></i>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-lg font-semibold text-slate-900">Sending transfer for review</p>
+                    <p class="mt-2 text-sm text-slate-500">We're securing the request and mak.</p>
+                </div>
+            </div>
+
+            <div id="modalSuccessStep" class="hidden px-6 py-8 text-center">
+                <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                    <i data-lucide="check" class="h-8 w-8"></i>
+                </div>
+                <h3 class="mt-5 text-xl font-semibold text-slate-900">Transfer is now pending</h3>
+                <p class="mt-2 text-sm text-slate-500">The transfer has been added to your recent transactions and saved in this browser.</p>
+                <button type="button" onclick="window.location.href='transactions.html'" class="mt-6 rounded-2xl bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800">
+                    View Transactions
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app-state.js"></script>
+    <script>
+        lucide.createIcons();
+        let pendingTransferPayload = null;
+        let isSubmittingTransfer = false;
+
+        document.getElementById('adminCodeInput').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                confirmAdminCode();
+            }
+        });
+
+        function requireAdminCode(event) {
+            if (event && event.preventDefault) event.preventDefault();
+            const recipient = document.getElementById('recipient').value.trim();
+            const amount = document.getElementById('amount').value;
+
+            if (!recipient || !amount || Number(amount) <= 0) {
+                return;
+            }
+
+            pendingTransferPayload = {
+                fromAccount: document.getElementById('fromAccount').value,
+                recipient,
+                amount,
+                routingNumber: document.getElementById('routingNumber').value.trim(),
+                memo: document.getElementById('memo').value.trim()
+            };
+
+            document.getElementById('modalRecipient').textContent = recipient;
+            document.getElementById('modalAmount').textContent = formatCurrencyInput(amount);
+            document.getElementById('adminCodeInput').value = '';
+            document.getElementById('adminCodeError').classList.add('hidden');
+            showTransferModalStep('modalAuthStep');
+            document.getElementById('transferModal').classList.remove('hidden');
+            document.getElementById('transferModal').classList.add('flex');
+            setTimeout(() => document.getElementById('adminCodeInput').focus(), 50);
+        }
+
+        function closeTransferModal() {
+            if (isSubmittingTransfer) return;
+            document.getElementById('transferModal').classList.add('hidden');
+            document.getElementById('transferModal').classList.remove('flex');
+            showTransferModalStep('modalAuthStep');
+        }
+
+        function handleModalBackdrop(event) {
+            if (event.target.id === 'transferModal') {
+                closeTransferModal();
+            }
+        }
+
+        function showTransferModalStep(stepId) {
+            const stepIds = ['modalAuthStep', 'modalSendingStep', 'modalSuccessStep'];
+            stepIds.forEach((id) => {
+                document.getElementById(id).classList.toggle('hidden', id !== stepId);
+            });
+            lucide.createIcons();
+        }
+
+        function confirmAdminCode() {
+            const adminCode = document.getElementById('adminCodeInput').value.trim();
+            const errorEl = document.getElementById('adminCodeError');
+
+            if (isSubmittingTransfer) {
+                return;
+            }
+
+            if (adminCode !== '56868') {
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            isSubmittingTransfer = true;
+            errorEl.classList.add('hidden');
+            showTransferModalStep('modalSendingStep');
+
+            window.setTimeout(() => {
+                if (!pendingTransferPayload) return;
+                addPendingTransfer(pendingTransferPayload);
+                pendingTransferPayload = null;
+                isSubmittingTransfer = false;
+                showTransferModalStep('modalSuccessStep');
+            }, 2200);
+        }
+    </script>
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-brand-900 border-t border-brand-800 text-white md:hidden z-50 pb-[env(safe-area-inset-bottom)]">
+        <div class="flex justify-around items-center h-16">
+            <a href="dashboard.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Home</span>
+            </a>
+            <a href="accounts.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Accounts</span>
+            </a>
+            <a href="transfer.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Transfer</span>
+            </a>
+            <a href="transactions.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Activity</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center justify-center w-full h-full space-y-1 opacity-70 hover:opacity-100 transition focus:opacity-100">
+                <i data-lucide="user" class="w-5 h-5"></i>
+                <span class="text-[10px] font-medium leading-none">Profile</span>
+            </a>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
